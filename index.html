@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What Credit Card Should You Get? | Caleb Hammer</title>
+  <title>What Credit Card Should You Get? | Money Matchup</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,17 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --lime: #e1fd0c;
-      --lime-dim: #c8e20a;
+      --accent: #F25656;
+      --accent-dim: #e04545;
       --green: #37ca37;
-      --dark: #080c0a;
-      --dark2: #101410;
-      --dark3: #181c18;
-      --card-bg: #141814;
-      --border: #252a25;
-      --border-light: #2e352e;
-      --text: #e8ede8;
-      --muted: #7a887a;
+      --dark: #080808;
+      --dark2: #0f0f0f;
+      --dark3: #161616;
+      --card-bg: #111111;
+      --border: rgba(255,255,255,0.08);
+      --border-light: rgba(255,255,255,0.12);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.45);
       --white: #ffffff;
     }
 
@@ -30,7 +30,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: linear-gradient(160deg, #050a06 0%, #080c08 40%, #0a0e08 100%);
+      background: #080808;
       background-attachment: fixed;
       color: var(--text);
       font-family: 'Inter', sans-serif;
@@ -56,7 +56,7 @@
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--lime);
+      border: 2px solid var(--accent);
     }
     .header-name {
       font-family: 'Inter Tight', sans-serif;
@@ -67,7 +67,7 @@
     }
     .header-tag {
       font-size: 0.72rem;
-      color: var(--lime);
+      color: var(--accent);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -94,7 +94,7 @@
       height: 108px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--lime);
+      border: 3px solid var(--accent);
       box-shadow: 0 0 40px rgba(225, 253, 12, 0.2);
       flex-shrink: 0;
     }
@@ -109,7 +109,7 @@
       margin-bottom: 14px;
     }
     .hero h1 span {
-      color: var(--lime);
+      color: var(--accent);
     }
     .hero p {
       font-size: 1rem;
@@ -156,15 +156,15 @@
       z-index: 1;
     }
     .step-dot.active {
-      background: var(--lime);
-      border-color: var(--lime);
+      background: var(--accent);
+      border-color: var(--accent);
       color: #000;
       box-shadow: 0 0 16px rgba(225, 253, 12, 0.4);
     }
     .step-dot.done {
-      background: rgba(225, 253, 12, 0.15);
-      border-color: var(--lime);
-      color: var(--lime);
+      background: rgba(242, 86, 86, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
     }
     .step-line {
       height: 2px;
@@ -173,7 +173,7 @@
       transition: background 0.25s ease;
     }
     .step-line.done {
-      background: var(--lime);
+      background: var(--accent);
     }
 
     /* Quiz card */
@@ -202,7 +202,7 @@
 
     .q-number {
       font-size: 0.72rem;
-      color: var(--lime);
+      color: var(--accent);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -237,16 +237,16 @@
       user-select: none;
     }
     .option:hover {
-      border-color: var(--lime);
-      background: rgba(225, 253, 12, 0.05);
+      border-color: var(--accent);
+      background: rgba(242, 86, 86, 0.05);
       transform: translateY(-1px);
     }
     .option:active {
       transform: translateY(0);
     }
     .option.selected {
-      border-color: var(--lime);
-      background: var(--lime);
+      border-color: var(--accent);
+      background: var(--accent);
     }
     .option-check {
       width: 22px;
@@ -267,8 +267,8 @@
       content: '';
       width: 9px;
       height: 6px;
-      border-left: 2.5px solid var(--lime);
-      border-bottom: 2.5px solid var(--lime);
+      border-left: 2.5px solid var(--accent);
+      border-bottom: 2.5px solid var(--accent);
       transform: rotate(-45deg) translateY(-1px);
       display: block;
     }
@@ -307,7 +307,7 @@
       color: var(--text);
     }
     .btn-next {
-      background: var(--lime);
+      background: var(--accent);
       border: none;
       color: #000;
       padding: 13px 30px;
@@ -345,7 +345,7 @@
       height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2.5px solid var(--lime);
+      border: 2.5px solid var(--accent);
       margin-bottom: 20px;
     }
     .result-badge {
@@ -354,7 +354,7 @@
       gap: 6px;
       background: rgba(225, 253, 12, 0.1);
       border: 1px solid rgba(225, 253, 12, 0.35);
-      color: var(--lime);
+      color: var(--accent);
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -368,7 +368,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--lime);
+      background: var(--accent);
       flex-shrink: 0;
     }
     .result-card-name {
@@ -382,40 +382,40 @@
     }
     .result-card-type {
       font-size: 0.9rem;
-      color: var(--lime);
+      color: var(--accent);
       font-weight: 600;
       letter-spacing: 0.02em;
     }
 
-    /* Caleb's take */
-    .caleb-take {
-      background: rgba(225, 253, 12, 0.05);
+    /* Our take */
+    .advisor-take {
+      background: rgba(242, 86, 86, 0.05);
       border: 1px solid rgba(225, 253, 12, 0.2);
       border-radius: 16px;
       padding: 22px 24px;
       margin-bottom: 20px;
     }
-    .caleb-take-header {
+    .advisor-header {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 12px;
     }
-    .caleb-take-header img {
+    .advisor-header img {
       width: 30px;
       height: 30px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid var(--lime);
+      border: 1.5px solid var(--accent);
     }
-    .caleb-take-name {
+    .advisor-name {
       font-family: 'Inter Tight', sans-serif;
       font-weight: 700;
       font-size: 0.82rem;
-      color: var(--lime);
+      color: var(--accent);
       letter-spacing: 0.02em;
     }
-    .caleb-take p {
+    .advisor-take p {
       font-size: 0.94rem;
       color: #b8c8b8;
       line-height: 1.7;
@@ -443,7 +443,7 @@
       font-family: 'Inter Tight', sans-serif;
       font-weight: 700;
       font-size: 0.82rem;
-      color: var(--lime);
+      color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 14px;
@@ -463,7 +463,7 @@
     }
     .info-card ul li::before {
       content: '+';
-      color: var(--lime);
+      color: var(--accent);
       position: absolute;
       left: 0;
       font-weight: 800;
@@ -504,7 +504,7 @@
       gap: 6px;
       background: rgba(225, 253, 12, 0.08);
       border: 1px solid rgba(225, 253, 12, 0.25);
-      color: var(--lime);
+      color: var(--accent);
       font-size: 0.78rem;
       font-weight: 600;
       padding: 5px 12px;
@@ -516,7 +516,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--lime);
+      background: var(--accent);
       flex-shrink: 0;
     }
     @media (min-width: 600px) {
@@ -541,9 +541,9 @@
 <body>
 
 <header class="header">
-  <img src="caleb.jpg" alt="Caleb Hammer" />
+  <img src="logo.png" alt="Money Matchup" />
   <div>
-    <div class="header-name">Caleb Hammer</div>
+    <div class="header-name">Money Matchup</div>
     <div class="header-tag">Financial Audit</div>
   </div>
 </header>
@@ -553,10 +553,10 @@
   <!-- QUIZ SCREEN -->
   <div id="quiz-screen">
     <div class="hero">
-      <img src="caleb.jpg" alt="Caleb Hammer" class="hero-photo" />
+      <img src="logo.png" alt="Money Matchup" class="hero-photo" />
       <div class="hero-copy">
         <h1>Find Your <span>Perfect</span> Credit Card</h1>
-        <p>Six questions. No fluff. Get a card recommendation based on your actual financial situation.</p>
+        <p>Six questions. No fluff. Find the right card for your financial situation.</p>
         <div class="trust-pills">
           <span class="trust-pill">No email required</span>
           <span class="trust-pill">No sign-up</span>
@@ -583,16 +583,16 @@
   <!-- RESULT SCREEN -->
   <div id="result-screen" class="hidden">
     <div class="result-hero">
-      <img src="caleb.jpg" alt="Caleb Hammer" class="result-photo" />
+      <img src="logo.png" alt="Money Matchup" class="result-photo" />
       <div><div class="result-badge">Your Match</div></div>
       <div class="result-card-name" id="res-name"></div>
       <div class="result-card-type" id="res-type"></div>
     </div>
 
-    <div class="caleb-take">
-      <div class="caleb-take-header">
-        <img src="caleb.jpg" alt="Caleb" />
-        <span class="caleb-take-name">Caleb's Take</span>
+    <div class="advisor-take">
+      <div class="advisor-header">
+        <img src="logo.png" alt="Money Matchup" />
+        <span class="advisor-name">Our Take</span>
       </div>
       <p id="res-take"></p>
     </div>
