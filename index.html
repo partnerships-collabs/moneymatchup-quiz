@@ -26,9 +26,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: #080808;
       background-attachment: fixed;
@@ -51,490 +49,107 @@
       top: 0;
       z-index: 100;
     }
-    .header img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--accent);
-    }
-    .header-name {
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .header-tag {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
+    .header img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+    .header-name { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 1rem; color: var(--white); letter-spacing: -0.02em; }
+    .header-tag { font-size: 0.72rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
 
-    /* Page wrapper */
-    .page {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 48px 20px 80px;
-    }
+    .page { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+    .page-wide { max-width: 980px; margin: 0 auto; padding: 48px 20px 80px; }
 
     /* Hero */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-bottom: 48px;
-      gap: 24px;
-    }
-    .hero-photo {
-      width: 108px;
-      height: 108px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 40px rgba(225, 253, 12, 0.2);
-      flex-shrink: 0;
-    }
-    .hero-copy {}
-    .hero h1 {
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 900;
-      font-size: 2.6rem;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      color: var(--white);
-      margin-bottom: 14px;
-    }
-    .hero h1 span {
-      color: var(--accent);
-    }
-    .hero p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 480px;
-      margin: 0 auto;
-    }
+    .hero { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 48px; gap: 24px; }
+    .hero-photo { width: 108px; height: 108px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); box-shadow: 0 0 40px rgba(242,86,86,0.2); flex-shrink: 0; }
+    .hero h1 { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 2.6rem; line-height: 1.05; letter-spacing: -0.04em; color: var(--white); margin-bottom: 14px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1rem; color: var(--muted); line-height: 1.65; max-width: 480px; margin: 0 auto; }
+    @media (min-width: 600px) { .hero { flex-direction: row; text-align: left; align-items: center; } .hero p { margin: 0; } }
 
-    @media (min-width: 600px) {
-      .hero {
-        flex-direction: row;
-        text-align: left;
-        align-items: center;
-      }
-      .hero p {
-        margin: 0;
-      }
-    }
-
-    /* Step indicators */
-    .steps {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 32px;
-    }
-    .step-dot {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--dark3);
-      border: 2px solid var(--border-light);
-      color: var(--muted);
-      font-size: 0.72rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Inter Tight', sans-serif;
-      transition: all 0.25s ease;
-      position: relative;
-      z-index: 1;
-    }
-    .step-dot.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #000;
-      box-shadow: 0 0 16px rgba(225, 253, 12, 0.4);
-    }
-    .step-dot.done {
-      background: rgba(242, 86, 86, 0.15);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .step-line {
-      height: 2px;
-      width: 32px;
-      background: var(--border-light);
-      transition: background 0.25s ease;
-    }
-    .step-line.done {
-      background: var(--accent);
-    }
+    /* Steps */
+    .steps { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 32px; }
+    .step-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--dark3); border: 2px solid var(--border-light); color: var(--muted); font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; font-family: 'Inter Tight', sans-serif; transition: all 0.25s ease; }
+    .step-dot.active { background: var(--accent); border-color: var(--accent); color: #000; box-shadow: 0 0 16px rgba(242,86,86,0.4); }
+    .step-dot.done { background: rgba(242,86,86,0.15); border-color: var(--accent); color: var(--accent); }
+    .step-line { height: 2px; width: 32px; background: var(--border-light); transition: background 0.25s ease; }
+    .step-line.done { background: var(--accent); }
 
     /* Quiz card */
-    .quiz-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-light);
-      border-radius: 20px;
-      padding: 36px;
-      overflow: hidden;
-    }
-
-    .q-slide {
-      animation: slideIn 0.28s ease forwards;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(24px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    .q-slide-back {
-      animation: slideInBack 0.28s ease forwards;
-    }
-    @keyframes slideInBack {
-      from { opacity: 0; transform: translateX(-24px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-
-    .q-number {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 10px;
-    }
-    .q-text {
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 800;
-      font-size: 1.4rem;
-      line-height: 1.25;
-      color: var(--white);
-      margin-bottom: 28px;
-      letter-spacing: -0.025em;
-    }
-
-    /* Options */
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .option {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 15px 18px;
-      background: var(--dark3);
-      border: 1.5px solid var(--border-light);
-      border-radius: 12px;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s, transform 0.1s;
-      user-select: none;
-    }
-    .option:hover {
-      border-color: var(--accent);
-      background: rgba(242, 86, 86, 0.05);
-      transform: translateY(-1px);
-    }
-    .option:active {
-      transform: translateY(0);
-    }
-    .option.selected {
-      border-color: var(--accent);
-      background: var(--accent);
-    }
-    .option-check {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 2px solid var(--muted);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.15s;
-    }
-    .option.selected .option-check {
-      background: #000;
-      border-color: #000;
-    }
-    .option.selected .option-check::after {
-      content: '';
-      width: 9px;
-      height: 6px;
-      border-left: 2.5px solid var(--accent);
-      border-bottom: 2.5px solid var(--accent);
-      transform: rotate(-45deg) translateY(-1px);
-      display: block;
-    }
-    .option-label {
-      font-size: 0.96rem;
-      color: var(--text);
-      line-height: 1.5;
-      font-weight: 400;
-    }
-    .option.selected .option-label {
-      color: #000;
-      font-weight: 600;
-    }
-
-    /* Navigation */
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 28px;
-    }
-    .btn-back {
-      background: none;
-      border: 1.5px solid var(--border-light);
-      color: var(--muted);
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-    }
-    .btn-back:hover {
-      border-color: var(--muted);
-      color: var(--text);
-    }
-    .btn-next {
-      background: var(--accent);
-      border: none;
-      color: #000;
-      padding: 13px 30px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 800;
-      cursor: pointer;
-      letter-spacing: -0.01em;
-      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
-    }
-    .btn-next:hover {
-      background: #eeff1a;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(225, 253, 12, 0.3);
-    }
-    .btn-next:active {
-      transform: translateY(0);
-    }
-    .btn-next:disabled {
-      background: var(--border-light);
-      color: var(--muted);
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
+    .quiz-card { background: var(--card-bg); border: 1px solid var(--border-light); border-radius: 20px; padding: 36px; overflow: hidden; }
+    .q-slide { animation: slideIn 0.28s ease forwards; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+    .q-slide-back { animation: slideInBack 0.28s ease forwards; }
+    @keyframes slideInBack { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
+    .q-number { font-size: 0.72rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; }
+    .q-text { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 1.4rem; line-height: 1.25; color: var(--white); margin-bottom: 28px; letter-spacing: -0.025em; }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .option { display: flex; align-items: center; gap: 14px; padding: 15px 18px; background: var(--dark3); border: 1.5px solid var(--border-light); border-radius: 12px; cursor: pointer; transition: border-color 0.15s, background 0.15s, transform 0.1s; user-select: none; }
+    .option:hover { border-color: var(--accent); background: rgba(242,86,86,0.05); transform: translateY(-1px); }
+    .option:active { transform: translateY(0); }
+    .option.selected { border-color: var(--accent); background: var(--accent); }
+    .option-check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--muted); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .option.selected .option-check { background: #000; border-color: #000; }
+    .option.selected .option-check::after { content: ''; width: 9px; height: 6px; border-left: 2.5px solid var(--accent); border-bottom: 2.5px solid var(--accent); transform: rotate(-45deg) translateY(-1px); display: block; }
+    .option-label { font-size: 0.96rem; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .option.selected .option-label { color: #000; font-weight: 600; }
+    .nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
+    .btn-back { background: none; border: 1.5px solid var(--border-light); color: var(--muted); padding: 12px 20px; border-radius: 10px; font-size: 0.88rem; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+    .btn-back:hover { border-color: var(--muted); color: var(--text); }
+    .btn-next { background: var(--accent); border: none; color: #000; padding: 13px 30px; border-radius: 10px; font-size: 0.95rem; font-family: 'Inter Tight', sans-serif; font-weight: 800; cursor: pointer; letter-spacing: -0.01em; transition: background 0.15s, transform 0.1s, box-shadow 0.15s; }
+    .btn-next:hover { background: #ff6b6b; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(242,86,86,0.3); }
+    .btn-next:active { transform: translateY(0); }
+    .btn-next:disabled { background: var(--border-light); color: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; }
 
     /* Result screen */
-    .result-hero {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-    .result-photo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2.5px solid var(--accent);
-      margin-bottom: 20px;
-    }
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(225, 253, 12, 0.1);
-      border: 1px solid rgba(225, 253, 12, 0.35);
-      color: var(--accent);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 99px;
-      margin-bottom: 20px;
-    }
-    .result-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-    .result-card-name {
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 900;
-      font-size: 2.4rem;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .result-card-type {
-      font-size: 0.9rem;
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
+    .result-header { text-align: center; margin-bottom: 44px; }
+    .result-logo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--accent); margin-bottom: 20px; }
+    .result-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(242,86,86,0.12); border: 1px solid rgba(242,86,86,0.35); color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 99px; margin-bottom: 16px; }
+    .result-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .result-headline { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 2.2rem; line-height: 1.05; letter-spacing: -0.04em; color: var(--white); margin-bottom: 8px; }
+    .result-subhead { font-size: 0.95rem; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+    .result-intro { font-size: 0.97rem; color: var(--muted); line-height: 1.7; max-width: 640px; margin: 0 auto; }
 
-    /* Our take */
-    .advisor-take {
-      background: rgba(242, 86, 86, 0.05);
-      border: 1px solid rgba(225, 253, 12, 0.2);
-      border-radius: 16px;
-      padding: 22px 24px;
-      margin-bottom: 20px;
-    }
-    .advisor-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .advisor-header img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid var(--accent);
-    }
-    .advisor-name {
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 700;
-      font-size: 0.82rem;
-      color: var(--accent);
-      letter-spacing: 0.02em;
-    }
-    .advisor-take p {
-      font-size: 0.94rem;
-      color: #b8c8b8;
-      line-height: 1.7;
-    }
+    /* Card grid */
+    .card-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
+    @media (min-width: 620px) { .card-grid { grid-template-columns: 1fr 1fr; } }
 
-    /* Info cards */
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-    @media (min-width: 580px) {
-      .info-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .info-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-light);
-      border-radius: 16px;
-      padding: 22px;
-    }
-    .info-card h3 {
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 700;
-      font-size: 0.82rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 14px;
-    }
-    .info-card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .info-card ul li {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.55;
-      padding-left: 18px;
-      position: relative;
-    }
-    .info-card ul li::before {
-      content: '+';
-      color: var(--accent);
-      position: absolute;
-      left: 0;
-      font-weight: 800;
-      font-size: 0.85rem;
-    }
+    .result-card { background: var(--card-bg); border: 1px solid var(--border-light); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; transition: border-color 0.2s; }
+    .result-card:hover { border-color: rgba(242,86,86,0.4); }
+    .rc-type { font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .rc-name { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 1.2rem; line-height: 1.2; letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px; }
 
-    /* Restart */
-    .btn-restart {
-      display: block;
-      width: 100%;
-      background: var(--dark3);
-      border: 1.5px solid var(--border-light);
-      color: var(--muted);
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-      text-align: center;
-    }
-    .btn-restart:hover {
-      border-color: var(--muted);
-      color: var(--text);
-    }
+    .our-take { background: rgba(242,86,86,0.05); border: 1px solid rgba(242,86,86,0.18); border-radius: 12px; padding: 16px 18px; margin-bottom: 18px; }
+    .our-take-label { font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .our-take-label img { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent); }
+    .our-take p { font-size: 0.9rem; color: #c0c8c0; line-height: 1.65; }
 
-    /* Trust pills */
-    .trust-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
-    }
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(225, 253, 12, 0.08);
-      border: 1px solid rgba(225, 253, 12, 0.25);
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 99px;
-      letter-spacing: 0.02em;
-    }
-    .trust-pill::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-    @media (min-width: 600px) {
-      .trust-pills { justify-content: flex-start; }
-    }
-    @media (max-width: 599px) {
-      .trust-pills { justify-content: center; }
-    }
+    .rc-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; flex: 1; }
+    .rc-list h4 { font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .rc-list ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .rc-list ul li { font-size: 0.82rem; color: var(--muted); line-height: 1.5; padding-left: 14px; position: relative; }
+    .rc-list ul li::before { content: '+'; color: var(--accent); position: absolute; left: 0; font-weight: 800; font-size: 0.8rem; }
+    .rc-list.notes ul li::before { content: '!'; color: rgba(255,200,80,0.85); }
+
+    .btn-apply { display: block; width: 100%; background: var(--accent); border: none; color: #000; padding: 13px; border-radius: 10px; font-size: 0.92rem; font-family: 'Inter Tight', sans-serif; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none; letter-spacing: -0.01em; transition: background 0.15s, transform 0.1s; margin-top: auto; }
+    .btn-apply:hover { background: #ff6b6b; transform: translateY(-1px); }
+
+    .btn-restart { display: block; width: 100%; background: var(--dark3); border: 1.5px solid var(--border-light); color: var(--muted); padding: 14px; border-radius: 12px; font-size: 0.9rem; font-family: 'Inter', sans-serif; font-weight: 500; cursor: pointer; transition: border-color 0.15s, color 0.15s; text-align: center; }
+    .btn-restart:hover { border-color: var(--muted); color: var(--text); }
+
+    .trust-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .trust-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(242,86,86,0.08); border: 1px solid rgba(242,86,86,0.25); color: var(--accent); font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: 99px; letter-spacing: 0.02em; }
+    .trust-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @media (min-width: 600px) { .trust-pills { justify-content: flex-start; } }
+    @media (max-width: 599px) { .trust-pills { justify-content: center; } }
 
     .hidden { display: none !important; }
 
     @media (max-width: 480px) {
-      .page { padding: 32px 16px 60px; }
+      .page, .page-wide { padding: 32px 16px 60px; }
       .hero h1 { font-size: 2rem; }
       .quiz-card { padding: 24px 18px; }
       .q-text { font-size: 1.2rem; }
-      .result-card-name { font-size: 1.9rem; }
+      .result-headline { font-size: 1.7rem; }
       .step-line { width: 20px; }
+      .rc-lists { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -548,69 +163,49 @@
   </div>
 </header>
 
-<div class="page">
-
-  <!-- QUIZ SCREEN -->
-  <div id="quiz-screen">
-    <div class="hero">
-      <img src="logo.png" alt="Money Matchup" class="hero-photo" />
-      <div class="hero-copy">
-        <h1>Find Your <span>Perfect</span> Credit Card</h1>
-        <p>Six questions. No fluff. Find the right card for your financial situation.</p>
-        <div class="trust-pills">
-          <span class="trust-pill">No email required</span>
-          <span class="trust-pill">No sign-up</span>
-          <span class="trust-pill">Results in 60 seconds</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="steps" id="steps-wrap"></div>
-
-    <div class="quiz-card">
-      <div id="q-inner">
-        <div class="q-number" id="q-number">Question 1</div>
-        <div class="q-text" id="q-text"></div>
-        <div class="options" id="q-options"></div>
-      </div>
-      <div class="nav">
-        <button class="btn-back" id="btn-back" onclick="prevQ()">Back</button>
-        <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>Next</button>
+<!-- QUIZ SCREEN -->
+<div id="quiz-screen" class="page">
+  <div class="hero">
+    <img src="logo.png" alt="Money Matchup" class="hero-photo" />
+    <div class="hero-copy">
+      <h1>Find Your <span>Perfect</span> Credit Card</h1>
+      <p>Six questions. No fluff. Find the right card for your financial situation.</p>
+      <div class="trust-pills">
+        <span class="trust-pill">No email required</span>
+        <span class="trust-pill">No sign-up</span>
+        <span class="trust-pill">Results in 60 seconds</span>
       </div>
     </div>
   </div>
 
-  <!-- RESULT SCREEN -->
-  <div id="result-screen" class="hidden">
-    <div class="result-hero">
-      <img src="logo.png" alt="Money Matchup" class="result-photo" />
-      <div><div class="result-badge">Your Match</div></div>
-      <div class="result-card-name" id="res-name"></div>
-      <div class="result-card-type" id="res-type"></div>
-    </div>
+  <div class="steps" id="steps-wrap"></div>
 
-    <div class="advisor-take">
-      <div class="advisor-header">
-        <img src="logo.png" alt="Money Matchup" />
-        <span class="advisor-name">Our Take</span>
-      </div>
-      <p id="res-take"></p>
+  <div class="quiz-card">
+    <div id="q-inner">
+      <div class="q-number" id="q-number">Question 1</div>
+      <div class="q-text" id="q-text"></div>
+      <div class="options" id="q-options"></div>
     </div>
-
-    <div class="info-grid">
-      <div class="info-card">
-        <h3>Why it fits you</h3>
-        <ul id="res-reasons"></ul>
-      </div>
-      <div class="info-card">
-        <h3>Before you apply</h3>
-        <ul id="res-notes"></ul>
-      </div>
+    <div class="nav">
+      <button class="btn-back" id="btn-back" onclick="prevQ()">Back</button>
+      <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>Next</button>
     </div>
+  </div>
+</div>
 
-    <button class="btn-restart" onclick="restart()">Start over</button>
+<!-- RESULT SCREEN -->
+<div id="result-screen" class="hidden page-wide">
+  <div class="result-header">
+    <img src="logo.png" alt="Money Matchup" class="result-logo" />
+    <div><div class="result-badge">Your Match</div></div>
+    <div class="result-headline" id="res-headline"></div>
+    <div class="result-subhead" id="res-subhead"></div>
+    <p class="result-intro" id="res-intro"></p>
   </div>
 
+  <div class="card-grid" id="res-cards"></div>
+
+  <button class="btn-restart" onclick="restart()">Start over</button>
 </div>
 
 <script>
@@ -685,158 +280,215 @@
     }
   ];
 
-  const cards = {
-    business: {
-      name: 'Chase Ink Business Preferred',
-      type: 'Business Rewards Card',
-      take: "For most business owners, the Ink Business Preferred is the right starting point. Three points per dollar on travel, advertising, shipping, and phone and internet bills covers where most businesses actually spend money. The welcome bonus is substantial and the $95 annual fee disappears against even modest business travel. If your business runs heavy on pure expenses and you want straight cashback instead of points, look at the Capital One Spark Cash Plus at the same time.",
-      reasons: [
-        '3x points on travel, shipping, internet, cable, phone, and social and search advertising up to $150,000 per year',
-        'Points transfer to 14 Chase airline and hotel partners',
-        'Cell phone protection up to $1,000 per claim when you pay your bill with the card',
-        '$95 annual fee with a strong welcome bonus that offsets it for years'
-      ],
-      notes: [
-        'Requires good to excellent business or personal credit',
-        'Best value when using Chase transfer partners rather than redeeming for cash',
-        'Pair with the Ink Business Unlimited for flat cashback on purchases outside the bonus categories',
-        'Capital One Spark Cash Plus is the better pick if your priority is pure flat-rate cashback over points'
-      ]
-    },
-    secured: {
-      name: 'Discover it Secured',
-      type: 'Credit Builder Card',
-      take: "Starting with a secured card is the right call when you have no credit history or you have had issues in the past. Discover it Secured is one of the best in class because it automatically reviews your account after 7 months and upgrades you to an unsecured card if you qualify. Do not blow this opportunity. Pay it in full every single month.",
-      reasons: [
-        'No credit history or rebuilding from scratch',
-        'Earn 2% cashback at gas stations and restaurants',
-        'No annual fee and no minimum credit score required',
-        'Discover matches all cashback earned in your first year'
-      ],
-      notes: [
-        'Requires a refundable security deposit (typically $200 minimum)',
-        'Your deposit becomes your credit limit',
-        'Automatic upgrade review after 7 months of on-time payments',
-        'Keep utilization under 30% to build your score fastest'
-      ]
-    },
-    student: {
-      name: 'Discover it Student',
-      type: 'Student Cashback Card',
-      take: "If you are a student, this is one of the cleanest starter cards out there. No annual fee, real cashback, and Discover does the first-year match which is essentially free money. The only rule is pay it off every month. I do not care that you are in college. No balance carrying allowed.",
-      reasons: [
-        'Designed for students with limited or no credit history',
-        '5% cashback on rotating quarterly categories, 1% on everything else',
-        'Discover matches all cashback earned after your first year',
-        '$20 statement credit each year your GPA is 3.0 or higher'
-      ],
-      notes: [
-        'No annual fee',
-        'Must be enrolled in a college or university',
-        'Credit limit starts low but increases with responsible use',
-        'Set up autopay for the full balance and forget about it'
-      ]
-    },
+  const resultPages = {
     transfer: {
-      name: 'Wells Fargo Reflect',
-      type: 'Balance Transfer Card',
-      take: "If you are carrying a balance right now, stop thinking about rewards and start thinking about eliminating that debt. The Wells Fargo Reflect gives you up to 21 months at 0% APR on balance transfers. That is your runway. Use it. Pay as much as you possibly can every month and do not add new charges.",
-      reasons: [
-        'Up to 21 months 0% intro APR on qualifying balance transfers',
-        '0% intro APR on purchases for the same period',
-        'Gives you breathing room to eliminate high-interest debt',
-        'No annual fee'
-      ],
-      notes: [
-        'Balance transfer fee applies, typically 3 to 5 percent',
-        'The 0% period ends, so have a payoff plan before you apply',
-        'Do not use this card for new purchases while paying down the transfer',
-        'Missing a payment may cost you the promotional rate'
-      ]
-    },
-    fizz: {
-      name: 'Fizz Card',
-      type: 'Debit-Linked Credit Builder',
-      take: "If your credit is in rough shape, a traditional credit card is not the move right now. Fizz links to your bank account and reports to credit bureaus like a credit card but pulls the payment automatically so you literally cannot carry a balance. It is designed for people who need to build credit without the risk of making things worse.",
-      reasons: [
-        'Works like a debit card but builds credit like a credit card',
-        'No risk of overspending or accumulating debt',
-        'Reports to all three major credit bureaus',
-        'Good stepping stone before applying for a traditional card'
-      ],
-      notes: [
-        'Subscription fee applies, currently around $8 per month',
-        'Not a traditional credit card so rewards are limited',
-        'Requires a linked checking account with sufficient funds',
-        'After 12 months of on-time history, reassess your credit score'
+      headline: 'Balance Transfer Cards',
+      subhead: 'Your Best Options for Paying Off Debt',
+      intro: "You're carrying a balance. The goal right now isn't rewards — it's eliminating that debt without interest piling on top. These cards give you the runway to do exactly that.",
+      cards: [
+        {
+          name: 'Wells Fargo Reflect',
+          type: 'Best for longest 0% APR',
+          take: "This is the card for someone drowning in high-interest debt. It gives you a massive runway to pay things off without interest stacking on top — and that's exactly what you need when you're digging yourself out.",
+          pros: ['Up to 21 months 0% intro APR on balance transfers', 'No annual fee', '0% also applies to new purchases during the intro period'],
+          notes: ['Balance transfer fee of 3–5%', 'Have a payoff plan before you apply', 'Missing a payment may end the promotional rate early']
+        },
+        {
+          name: 'Citi Diamond Preferred',
+          type: 'Simple debt elimination',
+          take: "A purpose-built debt elimination tool. No distractions, no rewards to chase — just a long stretch of zero percent interest so you can focus on actually paying what you owe.",
+          pros: ['Up to 21 months 0% on balance transfers', 'No annual fee', 'Simple, no-frills structure'],
+          notes: ['5% balance transfer fee', 'Limited utility once the promo period ends', 'Good to excellent credit required']
+        },
+        {
+          name: 'Chase Freedom Unlimited',
+          type: 'Transfer + future rewards',
+          take: "It helps you get out of debt and then stays useful once you do. Most balance transfer cards go in a drawer when the intro period ends. This one becomes a solid everyday card.",
+          pros: ['15 months 0% on balance transfers', '1.5%+ cashback after the promo period', 'No annual fee'],
+          notes: ['3% balance transfer fee', 'Shorter intro window than pure BT cards', 'Best if you plan to keep using it after payoff']
+        },
+        {
+          name: 'Citi Simplicity',
+          type: 'No late fees, ever',
+          take: "If you're already in a tough financial spot, the last thing you need is a penalty rate hitting you because you missed a payment. This card removes that risk entirely — no late fees, no penalty APR.",
+          pros: ['Up to 21 months 0% on balance transfers', 'No late fees, no penalty APR, no annual fee', 'Real safety net if payments are occasionally inconsistent'],
+          notes: ['5% balance transfer fee', 'No rewards after the promo period ends', 'Limited long-term value beyond debt payoff']
+        }
       ]
     },
     cashback: {
-      name: 'Citi Double Cash',
-      type: 'Flat-Rate Cashback Card',
-      take: "The Double Cash is boring and that is exactly why I like it. Two percent back on everything with no categories to track, no annual fee, and no games. If you pay your balance in full every month, you are essentially getting a 2% discount on your entire life. Simple. Clean. Effective.",
-      reasons: [
-        '2% cashback on all purchases with no category restrictions',
-        'No annual fee',
-        'No rotating categories or activation required',
-        'Works well as a primary card for people who want simplicity'
-      ],
-      notes: [
-        'Requires good to excellent credit to qualify',
-        'Best value only if you pay in full every month',
-        'No large welcome bonus compared to some competitors',
-        'Pair it with a travel card later once your credit grows'
-      ]
-    },
-    cashback_cat: {
-      name: 'Chase Freedom Flex',
-      type: 'Category Cashback Card',
-      take: "If you spend heavily in specific categories like gas and groceries, the Freedom Flex will earn you more than a flat-rate card. Five percent on rotating categories, three percent on dining and drugstores, and one percent on everything else. You do have to activate the quarterly categories but it takes two minutes and it is worth it.",
-      reasons: [
-        '5% cashback on rotating quarterly categories up to $1,500',
-        '3% on dining and drugstores, 1% on everything else',
-        'No annual fee',
-        'Strong welcome bonus typically $200 after spending $500 in three months'
-      ],
-      notes: [
-        'Requires activating quarterly categories each time they rotate',
-        'Best for people who spend heavily on gas, groceries, or dining',
-        'Points transfer to Chase Sapphire if you upgrade later',
-        'Requires good credit, typically 670 or above'
+      headline: 'Everyday Rewards Cards',
+      subhead: 'Your Best Options for Cashback',
+      intro: "You want a card that earns on what you actually buy, without complexity or an annual fee eating into your returns. These are the strongest cashback options for everyday spenders.",
+      cards: [
+        {
+          name: 'Amex Blue Cash Preferred',
+          type: 'Best for groceries',
+          take: "If you buy groceries — and we sure hope you do — this card is almost unfair. The cashback rate at supermarkets is one of the highest you'll find on any card, and the annual fee pays for itself fast.",
+          pros: ['6% at U.S. supermarkets (up to $6,000/yr)', '3% on transit and gas stations', '$250 statement credit welcome offer'],
+          notes: ['$95 annual fee (waived first year)', 'Supermarket bonus capped at $6,000 annually', 'Best for people who cook at home regularly']
+        },
+        {
+          name: 'Chase Freedom Unlimited',
+          type: 'Best flat-rate option',
+          take: "Simple, consistent, and it never lets you down. Flat cashback on everything plus better rates on dining. Hard to argue with for someone who wants rewards without having to think about categories.",
+          pros: ['1.5% on all purchases, 3% on dining', 'No annual fee', '$200 welcome bonus after $500 spend in 3 months'],
+          notes: ['Lower than category cards on top spend areas', 'Good credit required (670+)', 'Pairs well with a Chase travel card later']
+        },
+        {
+          name: 'Capital One SavorOne',
+          type: 'Best for dining & entertainment',
+          take: "If dining and entertainment are where your money goes, this card earns at a rate a flat-rate card simply can't touch — and it does it with zero annual fee. That's a rare combination.",
+          pros: ['3% on dining, entertainment, and groceries', 'No annual fee', '$200 welcome bonus after $500 spend'],
+          notes: ['1% on all other purchases', 'Good credit required', 'Less useful if dining is not a major spend category']
+        },
+        {
+          name: 'Citi Double Cash',
+          type: 'Simplest 2% on everything',
+          take: "The simplest cashback card out there. No effort, no learning curve — just two percent back on everything for doing absolutely nothing special. Sometimes the straightforward answer is the right answer.",
+          pros: ['2% back on all purchases — no categories, no limits', 'No annual fee', 'No rotating categories or activation required'],
+          notes: ['Good to excellent credit required', 'No large welcome bonus compared to competitors', 'Best as a primary everyday card']
+        }
       ]
     },
     travel: {
-      name: 'Chase Sapphire Preferred',
-      type: 'Travel Rewards Card',
-      take: "The Sapphire Preferred is the best entry-level travel card on the market right now. The welcome bonus alone usually covers the annual fee for two to three years. Five points per dollar on travel booked through Chase, three on dining, and solid transfer partners mean your points actually go somewhere. Pay it in full. Every month. No exceptions.",
-      reasons: [
-        '5x points on Chase Travel, 3x on dining and streaming',
-        'Points transfer to major airlines and hotel programs',
-        'Trip delay, cancellation, and primary rental car insurance included',
-        '$95 annual fee easily offset by the welcome bonus and perks'
-      ],
-      notes: [
-        'Requires good to excellent credit, typically 700 or above',
-        'Best value when using Chase transfer partners rather than redeeming for cash',
-        'Welcome bonus typically 60,000 points after spending $4,000 in three months',
-        'Upgrade to Sapphire Reserve later if you want premium lounge access'
+      headline: 'Travel Rewards Cards',
+      subhead: 'Your Best Options for Points & Miles',
+      intro: "You pay in full every month and you want your spending to take you somewhere. These cards offer the best combination of earning rates, transfer partners, and real-world travel value.",
+      cards: [
+        {
+          name: 'Chase Sapphire Preferred',
+          type: 'Best starter travel card',
+          take: "This is where most people should start with travel rewards. The welcome bonus alone is worth a free flight or two, the transfer partners are legitimate, and the $95 fee is one of the easiest to justify of any travel card on the market.",
+          pros: ['5x on Chase Travel, 3x on dining and streaming', 'Points transfer to 14 airline and hotel partners', 'Trip delay, cancellation, and rental car insurance included', '$95 annual fee'],
+          notes: ['Good to excellent credit required (700+)', 'Welcome bonus typically 60,000 pts after $4,000 spend in 3 months', 'Best value via transfer partners, not cash redemptions']
+        },
+        {
+          name: 'Amex Gold',
+          type: 'Best for dining + groceries',
+          take: "If you spend heavily on food — restaurants and grocery stores — the earning rates on this card are outstanding. You get statement credits that offset the fee and points that transfer to major airlines.",
+          pros: ['4x at restaurants and U.S. supermarkets', '$120 dining credit + $120 Uber Cash annually', 'Points transfer to major airline programs'],
+          notes: ['$250 annual fee — run the math on your dining spend first', 'Excellent credit preferred', 'Credits require setup and activation to receive']
+        },
+        {
+          name: 'Capital One Venture',
+          type: 'Most flexible travel miles',
+          take: "Two miles on every single purchase, no categories to track, and you can use them against any travel purchase. One of the most flexible travel cards for people who don't want to manage a points strategy.",
+          pros: ['2x miles on everything, no categories', 'Redeem against any travel purchase as a statement credit', '$95 annual fee'],
+          notes: ['Fewer transfer partners than Chase or Amex', 'Good to excellent credit required', 'Best if you value simplicity over maximum redemption value']
+        },
+        {
+          name: 'Citi Strata Premier',
+          type: 'Best for broad everyday earning',
+          take: "Three points on travel, dining, groceries, AND gas for $95 a year is genuinely hard to beat. If you want a travel card that earns big on real everyday spending, this one deserves a spot on your radar.",
+          pros: ['3x on travel, dining, groceries, gas, and hotels', '$100 off a single hotel stay each year (with $500+ booking)', '$95 annual fee'],
+          notes: ['Smaller transfer partner network than Chase or Amex', 'Good to excellent credit required', 'Underrated — often overlooked but consistently strong']
+        }
       ]
     },
     premium: {
-      name: 'Chase Sapphire Reserve',
-      type: 'Premium Travel Card',
-      take: "The Reserve is a serious card for people who travel seriously. The $550 annual fee sounds scary until you account for the $300 travel credit, Priority Pass lounge access, and 10x points on Chase Travel purchases. If you fly multiple times a year and you value comfort, this card pays for itself. If you are not hitting at least $550 in annual value, get the Preferred instead.",
-      reasons: [
-        '$300 annual travel credit applied automatically against travel purchases',
-        'Priority Pass Select for unlimited lounge access at 1,300 plus airports',
-        '10x on Chase Travel, 3x on all other travel and dining',
-        'Best-in-class travel protections including medical evacuation coverage'
-      ],
-      notes: [
-        '$550 annual fee, only worth it if you travel frequently',
-        'Requires excellent credit, typically 720 or above',
-        'Calculate your actual usage: $300 credit + lounge value + points earned',
-        'Not a starter card. Get the Preferred first if new to travel rewards'
+      headline: 'Premium Travel Cards',
+      subhead: 'Your Best Options for Serious Travelers',
+      intro: "You travel frequently, you have excellent credit, and you want the card that turns every trip into a better experience. These cards pay for themselves if you use what's in them.",
+      cards: [
+        {
+          name: 'Chase Sapphire Reserve',
+          type: 'Best all-around premium card',
+          take: "The points are ridiculously flexible, the travel protections are top-tier, and it just works. The one premium card that always has your back — whether you're booking flights or dealing with a canceled trip at midnight.",
+          pros: ['$300 annual travel credit applied automatically', '10x on Chase Travel, 3x on all other travel and dining', 'Priority Pass lounge access at 1,300+ airports', 'Best-in-class trip delay and medical evacuation coverage'],
+          notes: ['$550 annual fee — calculate your actual usage first', 'Excellent credit required (720+)', 'Not a starter card — get Sapphire Preferred first if new to travel rewards']
+        },
+        {
+          name: 'Capital One Venture X',
+          type: 'Best value premium card',
+          take: "Possibly the best value proposition in premium travel cards right now. The annual travel credit and anniversary miles effectively cancel out most of the fee before you even consider the lounge access.",
+          pros: ['$300 Capital One Travel credit annually', '10,000 anniversary miles (worth ~$100)', 'Priority Collection lounge access + Plaza Premium', '$395 annual fee'],
+          notes: ['Smaller transfer partner network than Amex or Chase', 'Excellent credit required', 'Travel credits require booking through Capital One Travel portal']
+        },
+        {
+          name: 'Amex Platinum',
+          type: 'Best for lounge access & perks',
+          take: "This card turns travel into a genuinely more pleasant experience. Centurion lounges, hotel upgrades, five times the points on flights — it makes the airport feel like a completely different place if you put the benefits to use.",
+          pros: ['Access to Centurion + Priority Pass + Delta Sky Club lounges', '$200 airline fee credit + $200 hotel credit + more annually', '5x on flights booked direct or through Amex Travel'],
+          notes: ['$695 annual fee — only worth it if you actively use the credits', 'Excellent credit required', 'Many credits require enrollment and active management to capture']
+        },
+        {
+          name: 'Citi AAdvantage Executive World Elite',
+          type: 'Best for American Airlines flyers',
+          take: "If American is your airline, this card is a cheat code. Admirals Club membership alone is worth more than the annual fee if you fly American even a handful of times per year.",
+          pros: ['Complimentary Admirals Club membership (retail value $700+)', '4x miles on American Airlines purchases', 'Priority boarding and first checked bag free for you and companions'],
+          notes: ['$595 annual fee — only worth it for frequent AA flyers', 'Excellent credit required', 'Far less useful if you fly multiple airlines']
+        }
+      ]
+    },
+    business: {
+      headline: 'Business Credit Cards',
+      subhead: 'Your Best Options for Business Spending',
+      intro: "You need a card built for how a business actually spends. These are the strongest options across travel rewards, flat-rate cashback, and premium perks for business owners.",
+      cards: [
+        {
+          name: 'Chase Ink Business Preferred',
+          type: 'Best overall business card',
+          take: "For most business owners, this is the right starting point. Three points on travel, advertising, shipping, and phone and internet bills covers where businesses actually spend money. The welcome bonus is substantial.",
+          pros: ['3x on travel, shipping, internet, phone, and advertising (up to $150K/yr)', 'Points transfer to 14 Chase airline and hotel partners', 'Cell phone protection up to $1,000 per claim', '$95 annual fee'],
+          notes: ['Good to excellent business or personal credit required', 'Best value via transfer partners, not cash redemptions', 'Pair with Ink Business Unlimited for flat-rate overflow spend']
+        },
+        {
+          name: 'Capital One Venture X Business',
+          type: 'Best for business travel',
+          take: "The card for any business owner who travels. The credits essentially pay the annual fee, you get lounge access on top of that, and it earns well across the board. Premium perks without the premium headache.",
+          pros: ['$300 Capital One Travel credit annually', 'Unlimited Priority Collection lounge access', '10x on hotels and rental cars via Capital One Travel', '$395 annual fee'],
+          notes: ['Excellent credit required', 'Maximum earning requires booking through Capital One Travel', 'Good transfer partners, but fewer than Chase or Amex']
+        },
+        {
+          name: 'Chase Ink Business Unlimited',
+          type: 'Best flat-rate business cashback',
+          take: "No annual fee, no categories, no thinking — just flat cashback on everything your business spends. Sometimes simple is exactly the right answer for a business that doesn't want to manage a rewards strategy.",
+          pros: ['1.5% cashback on all purchases with no category limits', 'No annual fee', '$750 welcome bonus after $6,000 spend in 3 months'],
+          notes: ['Good to excellent credit required', 'Lower rate than category-based cards on bonus spend', 'Works best as a secondary card for non-bonus purchases']
+        },
+        {
+          name: 'Amex Business Platinum',
+          type: 'Best for heavy business travelers',
+          take: "For the business owner who travels a lot and spends at scale, this card delivers. Lounge access, a flight redemption bonus, and an extensive list of annual credits — use what's in front of you and the value is real.",
+          pros: ['Access to Centurion + Priority Pass lounges', '5x on flights and prepaid hotels booked via Amex Travel', '$200 airline fee credit + $189 CLEAR credit + more annually'],
+          notes: ['$695 annual fee — only worth it at high spend and travel volume', 'Excellent credit required', 'Credits are complex — requires active management to maximize']
+        }
+      ]
+    },
+    builder: {
+      headline: 'Credit Builder Cards',
+      subhead: 'Your Best Options for Starting or Rebuilding',
+      intro: "Building credit is a long game, but the right card makes it faster and safer. These options are designed to help you establish a solid credit history — without the risk of making things worse.",
+      cards: [
+        {
+          name: 'Discover it Secured',
+          type: 'Best secured card',
+          take: "Starting with a secured card is the right move when you have no credit history or you're rebuilding. Discover automatically reviews your account after 7 months and upgrades you to an unsecured card if you qualify. Pay it in full every single month.",
+          pros: ['Automatic upgrade review after 7 months', '2% cashback at gas stations and restaurants', 'Discover matches all cashback earned in year one', 'No annual fee'],
+          notes: ['Requires a refundable security deposit (min $200)', 'Keep utilization under 30% to build fastest', 'Your deposit becomes your credit limit']
+        },
+        {
+          name: 'Discover it Student',
+          type: 'Best for students',
+          take: "One of the cleanest starter cards for students. No annual fee, real cashback, and Discover matches your first year of cashback earned. One rule: pay it off in full every single month.",
+          pros: ['5% on rotating quarterly categories, 1% on everything else', 'Discover matches all cashback after year one', '$20 credit each year your GPA is 3.0+', 'No annual fee'],
+          notes: ['Must be enrolled in a college or university', 'Credit limit starts low but grows with responsible use', 'Set up autopay for the full statement balance']
+        },
+        {
+          name: 'Fizz Card',
+          type: 'Best for avoiding debt risk',
+          take: "If your credit needs work, a traditional card may not be the right move yet. Fizz links to your bank account and reports to all three credit bureaus like a credit card — but pulls payment automatically, so you literally cannot carry a balance.",
+          pros: ['Cannot overspend — pulls directly from your linked bank account', 'Reports to all three major credit bureaus', 'No risk of accumulating new high-interest debt', 'Good stepping stone before a traditional card'],
+          notes: ['Monthly subscription fee (~$8/month)', 'Not a traditional credit card — limited rewards', 'After 12 months of on-time history, reassess and graduate up']
+        },
+        {
+          name: 'Capital One Platinum',
+          type: 'Best for fair credit',
+          take: "No annual fee, designed for people building from fair credit, and Capital One automatically reviews you for a higher limit after six months. Simple and effective.",
+          pros: ['Designed for fair to average credit (580+)', 'No annual fee', 'Automatic credit limit review after 6 months', 'Reports to all three bureaus'],
+          notes: ['No rewards — purely a credit-building tool', 'Upgrade to a rewards card once your score clears 670', 'Keep utilization low and pay on time every month']
+        }
       ]
     }
   };
@@ -844,55 +496,34 @@
   let current = 0;
   let answers = {};
   let selected = null;
-  let direction = 'forward';
 
-  // Business path: if cardtype is business and credit isn't poor, skip straight to business result
-  function isBusiness(a) {
-    return a.cardtype === 'business' && a.score !== 'poor';
-  }
-
-  function getCard(a) {
-    if (isBusiness(a)) return 'business';
-    const scores = {
-      secured: 0, student: 0, transfer: 0, fizz: 0,
-      cashback: 0, cashback_cat: 0, travel: 0, premium: 0
-    };
-
-    if (a.history === 'new')         { scores.secured += 4; scores.fizz += 1; }
-    if (a.history === 'student')     { scores.student += 5; scores.cashback += 1; }
-    if (a.history === 'mid')         { scores.cashback += 2; scores.cashback_cat += 2; scores.travel += 1; }
-    if (a.history === 'established') { scores.travel += 2; scores.premium += 2; scores.cashback += 1; }
-
-    if (a.score === 'excellent') { scores.premium += 3; scores.travel += 2; scores.cashback += 1; }
-    if (a.score === 'good')      { scores.cashback += 2; scores.cashback_cat += 2; scores.travel += 1; }
-    if (a.score === 'fair')      { scores.secured += 3; scores.fizz += 1; }
-    if (a.score === 'poor')      { scores.fizz += 4; scores.secured += 1; }
-
-    if (a.payoff === 'yes')       { scores.travel += 2; scores.premium += 2; scores.cashback += 2; scores.cashback_cat += 1; }
-    if (a.payoff === 'sometimes') { scores.cashback += 2; scores.cashback_cat += 1; }
-    if (a.payoff === 'carry')     { scores.transfer += 5; }
-    if (a.payoff === 'new-payoff'){ scores.secured += 2; scores.student += 1; }
-
-    if (a.goal === 'travel')   { scores.travel += 3; scores.premium += 1; }
-    if (a.goal === 'cashback') { scores.cashback += 3; scores.cashback_cat += 2; }
-    if (a.goal === 'build')    { scores.secured += 3; scores.student += 2; scores.fizz += 1; }
-    if (a.goal === 'debt')     { scores.transfer += 5; }
-
-    if (a.spending === 'travel')     { scores.travel += 3; scores.premium += 2; }
-    if (a.spending === 'everyday')   { scores.cashback_cat += 3; scores.cashback += 2; }
-    if (a.spending === 'everything') { scores.cashback += 3; }
-    if (a.spending === 'bills')      { scores.cashback += 1; scores.transfer += 1; }
-
-    if (a.fee === 'premium-yes')  { scores.premium += 4; scores.travel += 1; }
-    if (a.fee === 'cashback-yes') { scores.cashback += 2; scores.cashback_cat += 1; }
-    if (a.fee === 'no')           { scores.cashback += 2; scores.cashback_cat += 1; scores.premium -= 2; scores.travel -= 1; }
-    if (a.fee === 'unsure')       { scores.cashback += 1; scores.cashback_cat += 1; }
-
-    Object.keys(scores).forEach(k => { if (scores[k] < 0) scores[k] = 0; });
-
+  function getCategory(a) {
+    if (a.cardtype === 'business' && a.score !== 'poor') return 'business';
     if (a.payoff === 'carry' || a.goal === 'debt') return 'transfer';
-    if (a.score === 'poor' || (a.score === 'fair' && a.history === 'new')) return 'fizz';
+    if (a.score === 'poor' || (a.score === 'fair' && a.history === 'new')) return 'builder';
+    if (a.history === 'new' || a.history === 'student') return 'builder';
 
+    const scores = { transfer: 0, cashback: 0, travel: 0, premium: 0, builder: 0 };
+    if (a.history === 'mid')         { scores.cashback += 3; scores.travel += 1; }
+    if (a.history === 'established') { scores.travel += 2; scores.premium += 2; scores.cashback += 1; }
+    if (a.score === 'excellent') { scores.premium += 3; scores.travel += 2; scores.cashback += 1; }
+    if (a.score === 'good')      { scores.cashback += 2; scores.travel += 1; }
+    if (a.score === 'fair')      { scores.builder += 3; }
+    if (a.payoff === 'yes')        { scores.travel += 2; scores.premium += 2; scores.cashback += 2; }
+    if (a.payoff === 'sometimes')  { scores.cashback += 2; }
+    if (a.payoff === 'new-payoff') { scores.builder += 2; }
+    if (a.goal === 'travel')   { scores.travel += 3; scores.premium += 1; }
+    if (a.goal === 'cashback') { scores.cashback += 4; }
+    if (a.goal === 'build')    { scores.builder += 4; }
+    if (a.spending === 'travel')     { scores.travel += 3; scores.premium += 2; }
+    if (a.spending === 'everyday')   { scores.cashback += 4; }
+    if (a.spending === 'everything') { scores.cashback += 2; scores.travel += 1; }
+    if (a.spending === 'bills')      { scores.cashback += 1; }
+    if (a.fee === 'premium-yes')  { scores.premium += 4; scores.travel += 1; }
+    if (a.fee === 'cashback-yes') { scores.cashback += 2; }
+    if (a.fee === 'no')           { scores.cashback += 2; scores.premium -= 2; scores.travel -= 1; }
+    if (a.fee === 'unsure')       { scores.cashback += 1; }
+    Object.keys(scores).forEach(k => { if (scores[k] < 0) scores[k] = 0; });
     return Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
   }
 
@@ -903,7 +534,6 @@
       const dot = document.createElement('div');
       dot.className = 'step-dot' + (i === current ? ' active' : (i < current ? ' done' : ''));
       dot.textContent = i < current ? '✓' : (i + 1);
-      if (i < current) dot.textContent = '✓';
       wrap.appendChild(dot);
       if (i < questions.length - 1) {
         const line = document.createElement('div');
@@ -916,16 +546,12 @@
   function render(dir) {
     const q = questions[current];
     selected = answers[q.id] || null;
-
     renderSteps();
-
     const inner = document.getElementById('q-inner');
     inner.className = dir === 'back' ? 'q-slide-back' : 'q-slide';
     void inner.offsetWidth;
-
     document.getElementById('q-number').textContent = `Question ${current + 1} of ${questions.length}`;
     document.getElementById('q-text').textContent = q.text;
-
     const optionsEl = document.getElementById('q-options');
     optionsEl.innerHTML = '';
     q.options.forEach(opt => {
@@ -935,10 +561,9 @@
       div.addEventListener('click', () => selectOption(opt.value));
       optionsEl.appendChild(div);
     });
-
     document.getElementById('btn-back').style.visibility = current === 0 ? 'hidden' : 'visible';
     const nextBtn = document.getElementById('btn-next');
-    nextBtn.textContent = current === questions.length - 1 ? 'See My Card' : 'Next';
+    nextBtn.textContent = current === questions.length - 1 ? 'See My Cards' : 'Next';
     nextBtn.disabled = !selected;
   }
 
@@ -955,17 +580,35 @@
     if (!selected) return;
     answers[questions[current].id] = selected;
 
-    // Business path: after answering score, short-circuit to result (skip remaining questions)
-    if (answers.cardtype === 'business' && questions[current].id === 'score') {
-      showResult();
-      return;
-    }
-
-    // Business path: after cardtype=business, skip history and jump straight to score question
+    // Business: skip history, jump to score
     if (questions[current].id === 'cardtype' && selected === 'business') {
       current = questions.findIndex(q => q.id === 'score');
       render('forward');
       return;
+    }
+    // Business: after score, done
+    if (answers.cardtype === 'business' && questions[current].id === 'score') {
+      showResult(); return;
+    }
+    // Early exit: carrying a balance
+    if (questions[current].id === 'payoff' && selected === 'carry') {
+      showResult(); return;
+    }
+    // Early exit: poor credit
+    if (questions[current].id === 'payoff' && answers.score === 'poor') {
+      showResult(); return;
+    }
+    // Early exit: fair credit + no history
+    if (questions[current].id === 'payoff' && answers.score === 'fair' && answers.history === 'new') {
+      showResult(); return;
+    }
+    // Early exit: brand new to credit or student
+    if (questions[current].id === 'payoff' && (answers.history === 'new' || answers.history === 'student')) {
+      showResult(); return;
+    }
+    // Early exit: goal is debt payoff
+    if (questions[current].id === 'goal' && selected === 'debt') {
+      showResult(); return;
     }
 
     if (current < questions.length - 1) {
@@ -978,7 +621,6 @@
 
   function prevQ() {
     if (current > 0) {
-      // Business path: going back from score should return to cardtype, not history
       if (answers.cardtype === 'business' && questions[current].id === 'score') {
         current = questions.findIndex(q => q.id === 'cardtype');
       } else {
@@ -989,14 +631,42 @@
   }
 
   function showResult() {
-    const key = getCard(answers);
-    const card = cards[key];
+    const category = getCategory(answers);
+    const page = resultPages[category];
 
-    document.getElementById('res-name').textContent = card.name;
-    document.getElementById('res-type').textContent = card.type;
-    document.getElementById('res-take').textContent = card.take;
-    document.getElementById('res-reasons').innerHTML = card.reasons.map(r => `<li>${r}</li>`).join('');
-    document.getElementById('res-notes').innerHTML = card.notes.map(n => `<li>${n}</li>`).join('');
+    document.getElementById('res-headline').textContent = page.headline;
+    document.getElementById('res-subhead').textContent = page.subhead;
+    document.getElementById('res-intro').textContent = page.intro;
+
+    const grid = document.getElementById('res-cards');
+    grid.innerHTML = '';
+    page.cards.forEach(card => {
+      const el = document.createElement('div');
+      el.className = 'result-card';
+      el.innerHTML = `
+        <div class="rc-type">${card.type}</div>
+        <div class="rc-name">${card.name}</div>
+        <div class="our-take">
+          <div class="our-take-label">
+            <img src="logo.png" alt="Money Matchup" />
+            Our Take
+          </div>
+          <p>${card.take}</p>
+        </div>
+        <div class="rc-lists">
+          <div class="rc-list">
+            <h4>Why it fits</h4>
+            <ul>${card.pros.map(p => `<li>${p}</li>`).join('')}</ul>
+          </div>
+          <div class="rc-list notes">
+            <h4>Watch out for</h4>
+            <ul>${card.notes.map(n => `<li>${n}</li>`).join('')}</ul>
+          </div>
+        </div>
+        <a href="#" class="btn-apply">Apply Now</a>
+      `;
+      grid.appendChild(el);
+    });
 
     document.getElementById('quiz-screen').classList.add('hidden');
     document.getElementById('result-screen').classList.remove('hidden');
