@@ -664,6 +664,15 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // Embed mode: hide hero + header when ?embed=1
+  const isEmbed = new URLSearchParams(window.location.search).get('embed') === '1';
+  if (isEmbed) {
+    document.querySelector('.header').style.display = 'none';
+    const hero = document.querySelector('.hero');
+    if (hero) hero.style.display = 'none';
+    document.querySelector('.page').style.paddingTop = '20px';
+  }
+
   render('forward');
 </script>
 </body>
