@@ -496,6 +496,32 @@
   let selected = null;
   let autoAdvanceTimer = null;
 
+
+  function getCategory(a) {
+    if (a.cardtype === 'business' && a.score !== 'poor' && a.score !== 'new') return 'business';
+    if (a.payoff === 'carry') return 'transfer';
+    if (a.score === 'poor' || a.score === 'new') return 'builder';
+    if (a.goal === 'build') return 'builder';
+
+    const scores = { cashback: 0, travel: 0, premium: 0, builder: 0 };
+    if (a.score === 'excellent') { scores.premium += 3; scores.travel += 2; scores.cashback += 1; }
+    if (a.score === 'good')      { scores.cashback += 2; scores.travel += 1; }
+    if (a.score === 'fair')      { scores.builder += 2; scores.cashback += 1; }
+    if (a.payoff === 'yes')       { scores.travel += 2; scores.premium += 2; scores.cashback += 2; }
+    if (a.payoff === 'sometimes') { scores.cashback += 2; }
+    if (a.goal === 'travel')   { scores.travel += 3; scores.premium += 1; }
+    if (a.goal === 'cashback') { scores.cashback += 4; }
+    if (a.spending === 'travel')     { scores.travel += 3; scores.premium += 2; }
+    if (a.spending === 'everyday')   { scores.cashback += 4; }
+    if (a.spending === 'everything') { scores.cashback += 2; scores.travel += 1; }
+    if (a.spending === 'bills')      { scores.cashback += 1; }
+    if (a.fee === 'premium-yes')  { scores.premium += 4; scores.travel += 1; }
+    if (a.fee === 'cashback-yes') { scores.cashback += 2; }
+    if (a.fee === 'no')           { scores.cashback += 2; scores.premium -= 2; scores.travel -= 1; }
+    Object.keys(scores).forEach(k => { if (scores[k] < 0) scores[k] = 0; });
+    return Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
+  }
+
   function updateProgress() {
     const pct = Math.round((current / (questions.length - 1)) * 100);
     const fill = document.getElementById('progress-fill');
