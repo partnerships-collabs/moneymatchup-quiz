@@ -140,6 +140,21 @@
     @media (min-width: 600px) { .trust-pills { justify-content: flex-start; } }
     @media (max-width: 599px) { .trust-pills { justify-content: center; } }
 
+
+    .progress-wrap {
+      height: 4px;
+      background: var(--border-light);
+      border-radius: 99px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+      transition: width 0.35s ease;
+      min-width: 8%;
+    }
     .hidden { display: none !important; }
 
     @media (max-width: 480px) {
@@ -167,7 +182,7 @@
   <div class="hero">
     <div class="hero-copy">
       <h1>Find Your <span>Perfect</span> Credit Card</h1>
-      <p>Six questions. No fluff. Find the right card for your financial situation.</p>
+      <p>A few quick questions. No fluff. Find the right card for your financial situation.</p>
       <div class="trust-pills">
         <span class="trust-pill">No email required</span>
         <span class="trust-pill">No sign-up</span>
@@ -176,7 +191,7 @@
     </div>
   </div>
 
-  <div class="steps" id="steps-wrap"></div>
+  <div class="progress-wrap"><div class="progress-fill" id="progress-fill"></div></div>
 
   <div class="quiz-card">
     <div id="q-inner">
@@ -185,8 +200,7 @@
       <div class="options" id="q-options"></div>
     </div>
     <div class="nav">
-      <button class="btn-back" id="btn-back" onclick="prevQ()">Back</button>
-      <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>Next</button>
+      <button class="btn-back" id="btn-back" onclick="prevQ()">← Back</button>
     </div>
   </div>
 </div>
@@ -216,63 +230,51 @@
       ]
     },
     {
-      id: 'history',
-      text: "What best describes your credit situation?",
+      id: 'payoff',
+      text: "Do you pay off your full balance every month?",
       options: [
-        { label: "I have no credit history and have never had a card", value: 'new' },
-        { label: "I'm a student opening my first or second card", value: 'student' },
-        { label: "I've had a card for 1 to 3 years", value: 'mid' },
-        { label: "I've had a card for 3 or more years", value: 'established' }
+        { label: "Yes — I pay in full every month", value: 'yes' },
+        { label: "Usually, but not always", value: 'sometimes' },
+        { label: "No — I carry a balance or want to pay off existing debt", value: 'carry' }
       ]
     },
     {
       id: 'score',
-      text: "What is your current credit score?",
+      text: "What best describes your credit?",
       options: [
-        { label: "Excellent, 740 or above", value: 'excellent' },
-        { label: "Good, 670 to 739", value: 'good' },
-        { label: "Fair, 580 to 669", value: 'fair' },
-        { label: "Poor, below 580 or I don't know", value: 'poor' }
-      ]
-    },
-    {
-      id: 'payoff',
-      text: "Do you plan to pay your full balance every month?",
-      options: [
-        { label: "Yes, every single month without fail", value: 'yes' },
-        { label: "Most months, but not always", value: 'sometimes' },
-        { label: "No, I carry a balance and want to pay it down", value: 'carry' },
-        { label: "I don't have a card yet but I plan to pay in full", value: 'new-payoff' }
+        { label: "Excellent — 740 or above", value: 'excellent' },
+        { label: "Good — 670 to 739", value: 'good' },
+        { label: "Fair — 580 to 669", value: 'fair' },
+        { label: "Poor — below 580", value: 'poor' },
+        { label: "New to credit — just getting started", value: 'new' }
       ]
     },
     {
       id: 'goal',
-      text: "What is your number one goal with a new card?",
+      text: "What's your main goal with this card?",
       options: [
         { label: "Earn travel rewards, points, or miles", value: 'travel' },
         { label: "Get cashback on everyday purchases", value: 'cashback' },
-        { label: "Build or rebuild my credit score", value: 'build' },
-        { label: "Transfer and pay off existing credit card debt", value: 'debt' }
+        { label: "Build or improve my credit score", value: 'build' }
       ]
     },
     {
       id: 'spending',
-      text: "What do you spend the most money on?",
+      text: "Where do you spend the most?",
       options: [
-        { label: "Flights, hotels, and travel expenses", value: 'travel' },
-        { label: "Gas, groceries, dining, and everyday needs", value: 'everyday' },
-        { label: "A mix of everything roughly equally", value: 'everything' },
-        { label: "Mostly bills and fixed monthly expenses", value: 'bills' }
+        { label: "Flights, hotels, and travel", value: 'travel' },
+        { label: "Gas, groceries, and dining", value: 'everyday' },
+        { label: "A mix of everything", value: 'everything' },
+        { label: "Mostly bills and fixed expenses", value: 'bills' }
       ]
     },
     {
       id: 'fee',
       text: "Would you pay an annual fee if the rewards justify it?",
       options: [
-        { label: "Yes, for premium perks like lounge access and travel credits", value: 'premium-yes' },
-        { label: "Yes, if the cashback or points clearly outweigh the fee", value: 'cashback-yes' },
-        { label: "No, I want a card with zero annual fee", value: 'no' },
-        { label: "Not sure yet", value: 'unsure' }
+        { label: "Yes — for premium perks like lounge access", value: 'premium-yes' },
+        { label: "Yes — if cashback or points clearly outweigh the fee", value: 'cashback-yes' },
+        { label: "No — I want zero annual fee", value: 'no' }
       ]
     }
   ];
@@ -493,62 +495,25 @@
   let current = 0;
   let answers = {};
   let selected = null;
+  let autoAdvanceTimer = null;
 
-  function getCategory(a) {
-    if (a.cardtype === 'business' && a.score !== 'poor') return 'business';
-    if (a.payoff === 'carry' || a.goal === 'debt') return 'transfer';
-    if (a.score === 'poor' || (a.score === 'fair' && a.history === 'new')) return 'builder';
-    if (a.history === 'new' || a.history === 'student') return 'builder';
-
-    const scores = { transfer: 0, cashback: 0, travel: 0, premium: 0, builder: 0 };
-    if (a.history === 'mid')         { scores.cashback += 3; scores.travel += 1; }
-    if (a.history === 'established') { scores.travel += 2; scores.premium += 2; scores.cashback += 1; }
-    if (a.score === 'excellent') { scores.premium += 3; scores.travel += 2; scores.cashback += 1; }
-    if (a.score === 'good')      { scores.cashback += 2; scores.travel += 1; }
-    if (a.score === 'fair')      { scores.builder += 3; }
-    if (a.payoff === 'yes')        { scores.travel += 2; scores.premium += 2; scores.cashback += 2; }
-    if (a.payoff === 'sometimes')  { scores.cashback += 2; }
-    if (a.payoff === 'new-payoff') { scores.builder += 2; }
-    if (a.goal === 'travel')   { scores.travel += 3; scores.premium += 1; }
-    if (a.goal === 'cashback') { scores.cashback += 4; }
-    if (a.goal === 'build')    { scores.builder += 4; }
-    if (a.spending === 'travel')     { scores.travel += 3; scores.premium += 2; }
-    if (a.spending === 'everyday')   { scores.cashback += 4; }
-    if (a.spending === 'everything') { scores.cashback += 2; scores.travel += 1; }
-    if (a.spending === 'bills')      { scores.cashback += 1; }
-    if (a.fee === 'premium-yes')  { scores.premium += 4; scores.travel += 1; }
-    if (a.fee === 'cashback-yes') { scores.cashback += 2; }
-    if (a.fee === 'no')           { scores.cashback += 2; scores.premium -= 2; scores.travel -= 1; }
-    if (a.fee === 'unsure')       { scores.cashback += 1; }
-    Object.keys(scores).forEach(k => { if (scores[k] < 0) scores[k] = 0; });
-    return Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
-  }
-
-  function renderSteps() {
-    const wrap = document.getElementById('steps-wrap');
-    wrap.innerHTML = '';
-    questions.forEach((q, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'step-dot' + (i === current ? ' active' : (i < current ? ' done' : ''));
-      dot.textContent = i < current ? '✓' : (i + 1);
-      wrap.appendChild(dot);
-      if (i < questions.length - 1) {
-        const line = document.createElement('div');
-        line.className = 'step-line' + (i < current ? ' done' : '');
-        wrap.appendChild(line);
-      }
-    });
+  function updateProgress() {
+    const pct = Math.round((current / (questions.length - 1)) * 100);
+    const fill = document.getElementById('progress-fill');
+    if (fill) fill.style.width = Math.max(8, pct) + '%';
   }
 
   function render(dir) {
     const q = questions[current];
     selected = answers[q.id] || null;
-    renderSteps();
+    updateProgress();
+
     const inner = document.getElementById('q-inner');
     inner.className = dir === 'back' ? 'q-slide-back' : 'q-slide';
     void inner.offsetWidth;
-    document.getElementById('q-number').textContent = `Question ${current + 1} of ${questions.length}`;
+
     document.getElementById('q-text').textContent = q.text;
+
     const optionsEl = document.getElementById('q-options');
     optionsEl.innerHTML = '';
     q.options.forEach(opt => {
@@ -558,53 +523,45 @@
       div.addEventListener('click', () => selectOption(opt.value));
       optionsEl.appendChild(div);
     });
-    document.getElementById('btn-back').style.visibility = current === 0 ? 'hidden' : 'visible';
-    const nextBtn = document.getElementById('btn-next');
-    nextBtn.textContent = current === questions.length - 1 ? 'See My Cards' : 'Next';
-    nextBtn.disabled = !selected;
+
+    const backBtn = document.getElementById('btn-back');
+    if (backBtn) backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
   }
 
   function selectOption(value) {
+    if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
     selected = value;
     answers[questions[current].id] = value;
-    document.getElementById('btn-next').disabled = false;
     document.querySelectorAll('.option').forEach((el, i) => {
       el.classList.toggle('selected', questions[current].options[i].value === value);
     });
+    autoAdvanceTimer = setTimeout(() => { autoAdvanceTimer = null; nextQ(); }, 380);
   }
 
   function nextQ() {
     if (!selected) return;
     answers[questions[current].id] = selected;
+    const id = questions[current].id;
 
-    // Business: skip history, jump to score
-    if (questions[current].id === 'cardtype' && selected === 'business') {
+    // Business: skip payoff, jump to score
+    if (id === 'cardtype' && selected === 'business') {
       current = questions.findIndex(q => q.id === 'score');
-      render('forward');
-      return;
+      render('forward'); return;
     }
-    // Business: after score, done
-    if (answers.cardtype === 'business' && questions[current].id === 'score') {
+    // Business: after score → done
+    if (answers.cardtype === 'business' && id === 'score') {
       showResult(); return;
     }
-    // Early exit: carrying a balance
-    if (questions[current].id === 'payoff' && selected === 'carry') {
+    // Carry balance → always balance transfer
+    if (id === 'payoff' && selected === 'carry') {
       showResult(); return;
     }
-    // Early exit: poor credit
-    if (questions[current].id === 'payoff' && answers.score === 'poor') {
+    // Poor or new to credit → always builder
+    if (id === 'score' && (selected === 'poor' || selected === 'new')) {
       showResult(); return;
     }
-    // Early exit: fair credit + no history
-    if (questions[current].id === 'payoff' && answers.score === 'fair' && answers.history === 'new') {
-      showResult(); return;
-    }
-    // Early exit: brand new to credit or student
-    if (questions[current].id === 'payoff' && (answers.history === 'new' || answers.history === 'student')) {
-      showResult(); return;
-    }
-    // Early exit: goal is debt payoff
-    if (questions[current].id === 'goal' && selected === 'debt') {
+    // Goal = build → builder
+    if (id === 'goal' && selected === 'build') {
       showResult(); return;
     }
 
@@ -617,6 +574,7 @@
   }
 
   function prevQ() {
+    if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
     if (current > 0) {
       if (answers.cardtype === 'business' && questions[current].id === 'score') {
         current = questions.findIndex(q => q.id === 'cardtype');
@@ -671,6 +629,7 @@
   }
 
   function restart() {
+    if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
     current = 0;
     answers = {};
     selected = null;
