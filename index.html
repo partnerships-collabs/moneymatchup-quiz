@@ -61,8 +61,8 @@
     .hero-photo { width: 108px; height: 108px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); box-shadow: 0 0 40px rgba(242,86,86,0.2); flex-shrink: 0; }
     .hero h1 { font-family: 'Inter Tight', sans-serif; font-weight: 900; font-size: 2.6rem; line-height: 1.05; letter-spacing: -0.04em; color: var(--white); margin-bottom: 14px; }
     .hero h1 span { color: var(--accent); }
-    .hero p { font-size: 1rem; color: var(--muted); line-height: 1.65; max-width: 480px; margin: 0 auto; }
-    @media (min-width: 600px) { .hero { flex-direction: row; text-align: left; align-items: center; } .hero p { margin: 0; } }
+    .hero p { font-size: 1rem; color: var(--muted); line-height: 1.65; max-width: 480px; margin: 0 auto; text-align: center; }
+    
 
     /* Steps */
     .steps { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 32px; }
@@ -137,7 +137,7 @@
     .trust-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .trust-pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(224,58,58,0.07); border: 1px solid rgba(242,86,86,0.25); color: var(--accent); font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: 99px; letter-spacing: 0.02em; }
     .trust-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-    @media (min-width: 600px) { .trust-pills { justify-content: flex-start; } }
+    @media (min-width: 600px) { .trust-pills { justify-content: center; } }
     @media (max-width: 599px) { .trust-pills { justify-content: center; } }
 
 
