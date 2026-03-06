@@ -18,6 +18,31 @@ module.exports = {
   voiceLabel:      'Our Take',
   redirectMessage: 'Whatever card you get, the rule is simple. Pay it off every month. Full balance. Every time. Rewards only work in your favor when you are not paying interest to get them.',
 
+  // Multi-creator path routing (cards.moneymatchup.com/caleb, /griffin, etc.)
+  multiCreator: true,
+
+  // Add creators here. Each entry overrides the defaults above for that URL slug.
+  // Only include fields that differ from the MM defaults.
+  // Photos can be a full URL (e.g. from YouTube) or a filename in this skin's folder.
+  // Example:
+  // creatorConfigs: {
+  //   'caleb': {
+  //     creatorName:    'Caleb Hammer',
+  //     creatorTagline: 'Financial Audit',
+  //     creatorPhoto:   'https://yt3.googleusercontent.com/...',
+  //     voiceLabel:     "Caleb's Take",
+  //     redirectMessage: 'Pay it off. Every month...',
+  //     redirectUrls: {
+  //       balance_transfer: 'https://oc.brcclx.com/t?lid=...',
+  //       business:         'https://oc.brcclx.com/t?lid=...',
+  //       everyday:         'https://oc.brcclx.com/t?lid=...',
+  //       travel:           'https://oc.brcclx.com/t?lid=...',
+  //       premium_travel:   'https://oc.brcclx.com/t?lid=...',
+  //     },
+  //   },
+  // },
+  creatorConfigs: {},
+
   // Tracking
   ga4Id:      '',   // e.g. 'G-XXXXXXXXXX'
   subIdParam: 's1',
