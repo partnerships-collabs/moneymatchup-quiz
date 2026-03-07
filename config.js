@@ -45,7 +45,7 @@ module.exports = {
   creatorConfigs: {},
 
   // Tracking
-  ga4Id:      '',   // e.g. 'G-XXXXXXXXXX'
+  ga4Id:      'G-3G6NZ5CL5Q',
   subIdParam: 's1',
 
   // Affiliate redirect URLs
