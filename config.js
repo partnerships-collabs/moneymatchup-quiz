@@ -4,7 +4,7 @@ module.exports = {
   // Branding
   creatorName:    'Money Matchup',
   creatorTagline: 'Credit Card Quiz',
-  creatorPhoto:   'logo.png',
+  creatorPhoto:   'logo-icon.png',
   accentColor:    '#E03A3A',   // red — readable everywhere
   accentText:     '#ffffff',   // white — text ON red backgrounds
   accentRgb:      '224, 58, 58',
