@@ -962,7 +962,18 @@
     const cardKey = getCard(answers);
     _currentOutcome = OUTCOME_MAP[cardKey] || 'everyday';
     const baseUrl = _activeUrls[_currentOutcome];
-    _redirectUrl = _subIdSlug ? baseUrl + '&' + _subIdParam + '=' + encodeURIComponent(_subIdSlug) : baseUrl;
+    if (_creatorSlug && _subIdSlug) {
+      // Both creator and sub-ID present (e.g. /ich/yt) — pass s1=ich&s2=yt
+      _redirectUrl = baseUrl + '&' + _subIdParam + '=' + encodeURIComponent(_creatorSlug) + '&s2=' + encodeURIComponent(_subIdSlug);
+    } else if (_creatorSlug) {
+      // Creator only (e.g. /ich) — pass s1=ich
+      _redirectUrl = baseUrl + '&' + _subIdParam + '=' + encodeURIComponent(_creatorSlug);
+    } else if (_subIdSlug) {
+      // Sub-ID only (legacy single-creator path) — pass s1=yt
+      _redirectUrl = baseUrl + '&' + _subIdParam + '=' + encodeURIComponent(_subIdSlug);
+    } else {
+      _redirectUrl = baseUrl;
+    }
 
     const display = _activeDisplay[_currentOutcome];
     document.getElementById('res-name').textContent = display.name;
