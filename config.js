@@ -5,9 +5,10 @@ module.exports = {
   creatorName:    'Money Matchup',
   creatorTagline: 'Credit Card Quiz',
   creatorPhoto:   'logo.png',
-  accentColor:    '#E03A3A',
-  accentText:     '#ffffff',
+  accentColor:    '#E03A3A',   // red — readable everywhere
+  accentText:     '#ffffff',   // white — text ON red backgrounds
   accentRgb:      '224, 58, 58',
+  labelColor:     '#E03A3A',   // text labels on white (same as accent for readable colors)
 
   // Hero copy
   heroH1:      ['Find Your ', 'Perfect', ' Credit Card'],
